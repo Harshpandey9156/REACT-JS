@@ -22,7 +22,7 @@ function App() {
       Add Value
       </button>
       <br />
-      <br />
+      
       <button>Remove value</button>
        
        
