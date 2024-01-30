@@ -37,6 +37,7 @@ function App() {
       
       <button  onClick={removeValue}>Remove value : {counter}
       </button>
+      b
 
       <button onClick={resetValue}>
         reset
