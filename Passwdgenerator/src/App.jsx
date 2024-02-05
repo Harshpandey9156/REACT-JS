@@ -32,16 +32,22 @@ function App() {
 
   },[lenght,numberAllow, charAllow,setPassward])
 
-  const copyPasswardToClipBoard=useCallback(()=>{
+  
+
+  const  copyPasswardToClipBoard=useCallback(()=>{ 
+    passwardRef.current?.select()
+    passwardRef.current?.setSelectionRange(0,999)
+    
     window.navigator.clipboard.writeText(passward)
 
-  },[passward])
+  },[passward]) 
+
 
 useEffect(()=>{passwardGenerator()},
 [lenght,numberAllow, charAllow,passwardGenerator])
 // passwardGenerator()
 
-  return (
+  return (   
     <>
 
       
@@ -56,11 +62,8 @@ useEffect(()=>{passwardGenerator()},
         ref={passwardRef}
         readOnly
         />
-        <button 
-        onClick={copyPasswardToClipBoard}>
-
-        </button>
-        <button className='outline-none bg-blue-700 text-white px-3 py-0.5 shrink'>copy</button>
+        
+        <button  onClick={copyPasswardToClipBoard} className='outline-none bg-blue-700 text-white px-3 py-0.5 shrink'>copy</button>
 
 
 
@@ -113,5 +116,7 @@ useEffect(()=>{passwardGenerator()},
     </>
   )
 }
+
+
 
 export default App
