@@ -30,7 +30,7 @@ function App() {
     setPassward(pass)
 
 
-  },[lenght,numberAllow, charAllow,setPassward])
+  },[lenght,numberAllow, charAllow,setPassward]) 
 
   const copyPasswardToClipBoard=useCallback(()=>{
     window.navigator.clipboard.writeText(passward)
