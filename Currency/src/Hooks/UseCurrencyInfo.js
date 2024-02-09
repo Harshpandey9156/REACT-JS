@@ -6,11 +6,11 @@ function useCurrencyInfo(currency){
         fetch(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${currency}.json`)
         .then((res)=>res.json())// converting this into the jscon format
         .then((res)=>setData(res[currency])) 
-        console.log(data);
+        // console.log(data);
 
 
            },[currency])
-           console.log(data);
+        //    console.log(data);
            return data;
 
 }
