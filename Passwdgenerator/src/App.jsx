@@ -66,7 +66,6 @@ useEffect(()=>{passwardGenerator()},
         <button  onClick={copyPasswardToClipBoard} className='outline-none bg-blue-700 text-white px-3 py-0.5 shrink'>copy</button>
 
 
-
         </div> 
       <div className='flex text-sm gap-x-2'>
         <div className='flex items-center gap-x-1'>
