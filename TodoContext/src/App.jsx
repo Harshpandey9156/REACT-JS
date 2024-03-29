@@ -9,9 +9,9 @@ import { TodoForm, TodoItem } from './Components'
 function App() {
   const [todos, setTodos] = useState([])
 
-  const addtodo=(todo)=>{
-    setTodos((prev)=>[{id:data.now(),...todo},...prev])
-  }
+  const addtodo = (todo) => {
+    setTodos((prev) => [{ id: Date.now(), ...todo }, ...prev]);
+  };
 
   const updateTodo=(id,todo)=>{
     setTodos((prev)=>prev.map((prevTodo)=>(prevTodo.id===id? todo: prevTodo)))
@@ -21,10 +21,13 @@ function App() {
     setTodos((prev)=>prev.filter((todo)=>todo.id!==id))
 
   }
-  const toggle=(id)=>{
-    setTodos((prev)=>prev.map((prevTodo)=>prevTodo===id?  {...prev,completed :!prevTodo.completed}:prevTodo))
-
-  }
+  const toggle = (id) => {
+    setTodos((prev) =>
+      prev.map((prevTodo) =>
+        prevTodo.id === id ? { ...prevTodo, completed: !prevTodo.completed } : prevTodo
+      )
+    );
+  }; 
   useEffect(() => {
     const todos =JSON.parse(localStorage.getItem("todos"))
 
@@ -34,7 +37,7 @@ function App() {
   }, [])
 
   useEffect(() => {
-  localStorage.setItem("todos",JSON.stringify)
+  localStorage.setItem("todos",JSON.stringify(todos))
 
     
   }, [todos])
