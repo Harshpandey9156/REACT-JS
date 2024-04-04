@@ -49,7 +49,7 @@ export class AuthService {
          try {
               return await this.account.get();
          } catch (error) {
-              throw error;//here we can use the log statemnt also for show the error if we not wants to to do
+              throw error;//here we can use the log statement also for show the error if we not wants to to do
          }
     return null ; //here if an error in this try and catch then it will return
    }
