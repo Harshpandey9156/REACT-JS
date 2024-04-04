@@ -71,7 +71,63 @@ export class Service{
         }
 
     }
-    async
+    async getPost(slug){
+        try {
+            return await this.databases.getDocument(
+                config.apwriteDatabaseID,
+                config.apwriteCollectionID,
+                slug
+            )
+        } catch (error) {
+            console.log("Appright Services::getPost",error);
+            
+        }
+    }
+    async getPosts(queries=[Query.equals("status","active")]){
+        try {
+            return await this.databases.listDocuments(
+                config.apwriteDatabaseID,
+                config.apwriteCollectionID,
+                queries,
+
+            )
+        } catch (error) {
+            console.log("Appright Services:: getPosts",error);
+            return false;
+            
+        }
+    }
+    async uploadFile(file){
+        try {
+            return await this.bucket.createFile(
+                config.apwriteBucketID,
+                ID.unique(),
+                file
+                )
+        } catch (error) {
+            console.log("Appright Services:: uploadFile",error);
+            return false;
+        }
+    }
+    async deleteFile(fileId){
+        try {
+            return await this.bucket.deleteFile(
+                config.apwriteBucketID,
+                fileId
+            )
+            
+        } catch (error) {
+            console.log("Appright Services:: deleteFile",error);
+        }
+    }
+    // for the review of the file we can us e the asyc and without aysn we can use this also. this is more faster service
+
+    getfilePreview(fileId){
+        return this.bucket.getFilePreview(
+            config.apwriteBucketID,
+            fileId
+        )
+    }
 }
 
 
