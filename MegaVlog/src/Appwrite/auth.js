@@ -1,6 +1,7 @@
 import config from "../config/config.js";
 import { Client, Account, ID } from "appwrite";
 
+
 export class AuthService {
   client = new Client();
   account;
@@ -45,15 +46,24 @@ export class AuthService {
            throw error;
        }
    }
-   async getCurretUser(){
-         try {
-              return await this.account.get();
-         } catch (error) {
-              throw error;//here we can use the log statement also for show the error if we not wants to to do
-         }
-    return null ; //here if an error in this try and catch then it will return
-   }
-   async   logout(){
+  //  async getCurretUser(){
+  //        try {
+  //             return await  account.get();
+  //        } catch (error) {
+  //             throw error;//here we can use the log statement also for show the error if we not wants to to do
+  //        }
+  //   return null ; //here if an error in this try and catch then it will return
+  //  }
+  async getCurrentUser() {
+    try {
+        return await this.account.get();
+    } catch (error) {
+        console.log("Appwrite serive :: getCurrentUser :: error", error);
+    }
+
+    return null;
+}
+   async  logout(){
          try {
               return await this.account.deleteSessions("current");
          } catch (error) {
