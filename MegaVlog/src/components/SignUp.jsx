@@ -1,9 +1,9 @@
 import React,{useState} from 'react'
 import authService from '../Appwrite/auth'
 import {Link,useNavigate} from 'react-router-dom'
-import {Login} from '../store/authSlice'
+import {login} from '../store/authSlice'
 import {useDispatch} from 'react-redux'
-import {Button,Input,Logo} from './index'
+import {button,input,select}  from "./index"
 import {useForm} from 'react-hook-form'
 
 
@@ -20,7 +20,7 @@ function SignUp() {
             if(user){
                 const userData =await authService.getCurrentUser()
                 if(userData){
-                    dispatch(Login(userData))
+                    dispatch(   login(userData))
                     navigate('/')
                 }
             }
@@ -52,14 +52,14 @@ function SignUp() {
 
         <form onSubmit={handleSubmit(create)}>
             <div className='space-y-5'>
-                <Input
+                <input
                 label="Full Name: "
                 placeholder="Enter your full name"
                 {...register("name", {
                     required: true,
                 })}
                 />
-                <Input
+                <input
                 label="Email: "
                 placeholder="Enter your email"
                 type="email"
@@ -71,16 +71,15 @@ function SignUp() {
                     }
                 })}
                 />
-                <Input
+                <input
                 label="Password: "
                 type="password"
                 placeholder="Enter your password"
                 {...register("password", {
                     required: true,})}
                 />
-                <Button type="submit" className="w-full">
-                    Create Account
-                </Button>
+                 
+                <button type="submit" className="w-full"> Create Account</button>
             </div>
         </form>
     </div>
